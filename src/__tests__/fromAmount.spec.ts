@@ -1,4 +1,4 @@
-import * as Money from "..";
+import { Money } from "../index";
 
 // based on
 // https://github.com/RubyMoney/money/blob/master/spec/money_spec.rb
