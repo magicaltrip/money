@@ -1,13 +1,15 @@
 {
   "name": "@magicaltrip/money",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "git@github.com:magicaltrip/money.git",
   "author": "Marcelo Alves <alves@libra.co.jp>",
   "license": "MIT",
   "scripts": {
     "fetch": "node scripts/fetch-currencies.js",
     "build": "tsc",
+    "prepublish": "npm run build",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
@@ -18,5 +20,6 @@
     "ts-jest": "24.1.0",
     "typescript": "3.6.4",
     "xml2js": "0.4.22"
-  }
+  },
+  "sideEffects": false
 }
