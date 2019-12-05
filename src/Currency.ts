@@ -19,6 +19,6 @@ export let make = (code: string) => {
 
   return {
     code: record.Ccy,
-    subunitToUnit: Math.pow(10, record.CcyMnrUnts)
+    subunitToUnit: minorUnitsFactor[code]
   };
 };
