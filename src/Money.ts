@@ -50,3 +50,20 @@ export let roundDown = (amount: number, currency: string) => {
 
   return make(flooredAmountInMinorUnits, currency).amount;
 };
+
+type ExchangeRates = {
+  [baseCurrencyCode: string]: {
+    [targetCurrencyCode: string]: number;
+  };
+};
+
+export let exchangeTo = (
+  rates: ExchangeRates,
+  fromMoney: t,
+  targetCurrencyCode: string
+) => {
+  const exchangeRate = rates[fromMoney.currency.code][targetCurrencyCode];
+  const newAmount = exchangeRate * fromMoney.amount;
+
+  return fromAmount(newAmount, targetCurrencyCode);
+};
