@@ -29,3 +29,24 @@ export let equals = (a: t, b: t) => {
 export let toFloat = (a: t): number => {
   return a.amount / Math.pow(10, a.amount);
 };
+
+export let round = (amount: number, currencyCode: string) => {
+  const currency = Currency.make(currencyCode);
+  const fractionDigits = Math.log10(currency.subunitToUnit);
+
+  return parseFloat(amount.toFixed(fractionDigits));
+};
+
+export let roundUp = (amount: number, currency: string) => {
+  const money = fromAmount(amount, currency);
+  const ceiledAmountInMajorUnits = Math.ceil(money.value / 100) * 100;
+
+  return make(ceiledAmountInMajorUnits, currency).amount;
+};
+
+export let roundDown = (amount: number, currency: string) => {
+  const money = fromAmount(amount, currency);
+  const flooredAmountInMinorUnits = Math.floor(money.value / 100) * 100;
+
+  return make(flooredAmountInMinorUnits, currency).amount;
+};
